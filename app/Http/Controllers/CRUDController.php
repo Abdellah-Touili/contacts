@@ -37,56 +37,37 @@ class CRUDController extends Controller
      */
     public function store(Request $request)
     {
-        $crud = new Crud([
-          'civilite' => $request->get('civilite'),
-		  'prenom' => $request->get('prenom'),
-          'nom' => $request->get('nom'),
-		  'fonction' => $request->get('fonction'),
-		  'service' => $request->get('service'),
-		  'telephone_mobile' => $request->get('telephone_mobile'),
-		  'email' => $request->get('email'),
-		  'date_naissance' => $request->get('date_naissance'),
-		  'societe' => $request->get('societe'),
-		  'adresse' => $request->get('adresse'),
-		  'code_postal' => $request->get('code_postal'),
-		  'ville' => $request->get('ville'),
-		  'telephone' => $request->get('telephone'),
-		  'site_web' => $request->get('site_web')
+       $crud = new Crud([
+	  'civilite' => $request->get('civilite'),
+	  'prenom' => $request->get('prenom'),
+	  'nom' => $request->get('nom'),
+	  'fonction' => $request->get('fonction'),
+	  'service' => $request->get('service'),
+	  'telephone_mobile' => $request->get('telephone_mobile'),
+	  'email' => $request->get('email'),
+	  'date_naissance' => $request->get('date_naissance'),
+	  'societe' => $request->get('societe'),
+	  'adresse' => $request->get('adresse'),
+	  'code_postal' => $request->get('code_postal'),
+	  'ville' => $request->get('ville'),
+	  'telephone' => $request->get('telephone'),
+	  'site_web' => $request->get('site_web')
         ]);
 
-        $crud->save();
-
-        return redirect('/crud');
+       $crud->save();
+       return redirect('/crud');
     }
 
     /**
      * Display the specified resource.
-     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $crud = Crud::find($id);
-		echo "<b>Détails contact</b>: $crud->prenom"." "."$crud->nom <br>";
-		echo "<b>Civilité:</b>". $crud->civilite."<br>";
-		echo "<b>Prénom:</b>".$crud->prenom."<br>";
-		echo "<b>Nom:</b>".$crud->nom."<br>";
-		echo "<b>Fonction:</b>".$crud->fonction."<br>";
-		echo "<b>Service:</b>".$crud->service."<br>";
-		echo "<b>Téléphone mobile:</b>".$crud->telephone_mobile."<br>";
-		echo "<b>Email:</b>".$crud->email."<br>";
-		echo "<b>Date de naissance:</b>".$crud->date_naissance."<br>";
-		echo "<b>Société:</b>".$crud->societe."<br>";
-		echo "<b>Adresse:</b>".$crud->adresse."<br>";
-		echo "<b>Code postal:</b>".$crud->code_postal."<br>";
-		echo "<b>Ville:</b>".$crud->ville."<br>";
-		echo "<b>Téléphone:</b>".$crud->telephone."<br>";
-		echo "<b>Site web:</b>".$crud->site_web."<br>";
-		
-	//echo  "<a href=\"{{action('CRUDController@show', $post['id'])}}\" class=\"btn btn-warning\">Voir</a>";
-
-}
+		$crud = Crud::find($id);
+        return view('crud.show', compact('crud','id'));
+	}
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,9 +77,7 @@ class CRUDController extends Controller
     public function edit($id)
     {
         $crud = Crud::find($id);
-
         return view('crud.edit', compact('crud','id'));
-
     }
 
     /**
