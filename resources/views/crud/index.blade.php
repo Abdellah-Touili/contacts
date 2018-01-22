@@ -30,11 +30,11 @@
         <td>{{$post['societe']}}</td>
 		 <td>{{$post['ville']}}</td>
         <td><a href="{{action('CRUDController@edit', $post['id'])}}" class="btn btn-warning">Editer</a></td>
-		<td><a href="{{action('CRUDController@show', $post['id'])}}" class="btn btn-warning">Voir</a></td>
+		<td><a href="{{action('CRUDController@show', $post['id'])}}" class="btn btn-success">Voir</a></td>
         <td>
           <form action="{{action('CRUDController@destroy', $post['id'])}}" method="post">
             {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE" onclick="return confirm('Confirmez la suppression?');">
+            <input name="_method" type="hidden" value="DELETE" onClick="return confirm('Confirmez la suppression?');">
             <button class="btn btn-danger" type="submit">Supprimer</button>
           </form>
         </td>
