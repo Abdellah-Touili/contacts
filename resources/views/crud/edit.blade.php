@@ -73,8 +73,6 @@
       <div class="col-sm-10">
         <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="date de naissance" name="date_naissance" value="{{$crud->date_naissance}}">
 		
-		<input class="datepicker" type="text" name="date">
-		
       </div>
     </div>
 	
